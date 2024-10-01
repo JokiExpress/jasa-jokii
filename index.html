@@ -1,368 +1,413 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jasa Joki</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      height: 100vh;
-      background-image: url('https://github.com/ega321/jasa-jokii/blob/main/gambar1.jpeg?raw=true');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jokiExpress - Solusi Jasa Joki Terbaik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #004aad;
+            --accent-color: #ff5000;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+        }
 
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.8);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      font-size: 3em;
-      color: #4CAF50;
-      margin: 0;
-      animation: fadeIn 2s ease-in-out;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    h2 {
-      color: #555;
-      margin: 10px 0 30px;
-    }
+        body.dark-mode {
+            background-color: #333333;
+            color: #ffffff;
+        }
 
-    .menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
 
-    .menu-item {
-      position: relative;
-      width: 220px;
-      padding: 15px;
-      background-color: rgba(76, 175, 80, 0.8);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s, background-color 0.3s;
-      font-size: 1.2em;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+        header.scrolled {
+            background-color: rgba(0, 74, 173, 0.9);
+        }
 
-    .menu-item:hover {
-      transform: translateY(-5px);
-      background-color: rgba(69, 160, 73, 1);
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .menu-item:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #333;
-      color: white;
-      padding: 5px;
-      border-radius: 5px;
-      white-space: nowrap;
-      z-index: 10;
-      margin-bottom: 5px;
-    }
+        .logo-img {
+            width: 50px;
+            margin-right: 10px;
+        }
 
-    #popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 400px;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      text-align: left;
-      z-index: 999;
-      border-radius: 10px;
-      overflow-y: auto;
-      max-height: 80vh;
-      opacity: 0; 
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
 
-    #popup.show {
-      display: block;
-      opacity: 1; 
-      transform: translate(-50%, -50%) scale(1.05);
-    }
+        nav ul li {
+            margin: 0 15px;
+        }
 
-    #popup h3 {
-      color: #333;
-      margin-top: 0;
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
 
-    #popup button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-      margin-top: 10px;
-    }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
 
-    #popup button:hover {
-      background-color: #45a049;
-    }
+        .hero {
+            background-image: url('hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 50px 100px;
+            text-align: center;
+        }
 
-    .social {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 10px;
-    }
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
 
-    .social img {
-      width: 50px;
-      height: 50px;
-      transition: transform 0.3s ease;
-    }
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
 
-    .social img:hover {
-      transform: scale(1.2);
-    }
+        .cta-btn:hover {
+            background-color: #e64600;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-    .rating-container {
-      margin-top: 20px;
-      text-align: center;
-    }
+        #services {
+            padding: 100px 50px;
+            text-align: center;
+        }
 
-    .stars {
-      display: flex;
-      justify-content: center;
-    }
+        .service-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
 
-    .stars input {
-      display: none;
-    }
+        .category {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            transition: transform 0.3s ease;
+        }
 
-    .stars label {
-      font-size: 2em;
-      color: #ccc;
-      cursor: pointer;
-    }
+        .category:hover {
+            transform: scale(1.05);
+        }
 
-    .stars input:checked ~ label {
-      color: #FFD700;
-    }
+        .category h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
 
-    .stars label:hover,
-    .stars label:hover ~ label {
-      color: #FFD700;
-    }
+        .category p.price {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
 
-    .comment-box {
-      margin-top: 20px;
-    }
+        #order {
+            padding: 100px 50px;
+            background-color: #f9f9f9;
+        }
 
-    textarea {
-      width: 100%;
-      height: 100px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      resize: none;
-    }
+        .order-steps ol {
+            text-align: left;
+            margin-bottom: 20px;
+        }
 
-    .feedback-message {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #4CAF50;
-      display: none; 
-    }
+        .whatsapp-link {
+            background-color: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      display: none; 
-    }
+        #testimonials {
+            padding: 100px 50px;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
 
-    .back-to-top:hover {
-      background-color: #45a049;
-    }
+        .testimonials {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        /* Tombol untuk Mengubah Mode Gelap */
+        #darkModeToggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #darkModeToggle:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Timer Hitung Mundur */
+        #promo-timer {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+    </style>
 </head>
 <body>
-
-  <div class="overlay">
-    <h1>Jasa Joki</h1>
-    <h2>Kami Menyediakan Jasa Joki untuk Berbagai Tugas</h2>
-
-    <div class="menu">
-      <div class="menu-item" data-tooltip="Jasa Presentasi" onclick="showPopup('PPT')">Joki PPT</div>
-      <div class="menu-item" data-tooltip="Jasa Penulisan" onclick="showPopup('Makalah')">Joki Makalah</div>
-      <div class="menu-item" data-tooltip="Jasa Pemrograman" onclick="showPopup('Coding')">Joki Coding</div>
-      <div class="menu-item" data-tooltip="Jasa Terjemahan" onclick="showPopup('Terjemah')">Joki Terjemah Dokumen</div>
-      <div class="menu-item" data-tooltip="Jasa Lainnya" onclick="showPopup('Lain-lain')">Joki Lainnya</div>
-    </div>
-
-    <div id="popup" class="popup">
-      <h3 id="popup-title">Judul</h3>
-      <p id="popup-content">Konten</p>
-
-      <div class="rating-container">
-        <h4>Rating:</h4>
-        <div class="stars">
-          <input type="radio" id="star5" name="rating" value="5" onclick="showFeedback('5')">
-          <label for="star5">&#9733;</label>
-          <input type="radio" id="star4" name="rating" value="4" onclick="showFeedback('4')">
-          <label for="star4">&#9733;</label>
-          <input type="radio" id="star3" name="rating" value="3" onclick="showFeedback('3')">
-          <label for="star3">&#9733;</label>
-          <input type="radio" id="star2" name="rating" value="2" onclick="showFeedback('2')">
-          <label for="star2">&#9733;</label>
-          <input type="radio" id="star1" name="rating" value="1" onclick="showFeedback('1')">
-          <label for="star1">&#9733;</label>
+    <header>
+        <div class="logo">
+            <img src="logo-jokiExpress.png" alt="jokiExpress Logo" class="logo-img">
+            <h1>jokiExpress</h1>
         </div>
-      </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#services">Jasa</a></li>
+                <li><a href="#order">Cara Order</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#contact">Hubungi Kami</a></li>
+                <li><a href="#logout" class="logout-btn">Keluar</a></li>
+            </ul>
+        </nav>
+        <!-- Tombol untuk Mengubah Mode Gelap -->
+        <button id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
 
-      <div class="comment-box">
-        <h4>Komentar:</h4>
-        <textarea id="comment" placeholder="Tambahkan komentar Anda..."></textarea>
-      </div>
+    <section id="home" class="hero">
+        <h2>Selamat Datang di jokiExpress</h2>
+        <p>Kami menyediakan layanan joki untuk berbagai kebutuhan tugasmu!</p>
+        <a href="#services" class="cta-btn">Mulai Sekarang</a>
+    </section>
 
-      <div class="feedback-message" id="feedback-message"></div>
+    <section id="promo-timer">
+        <h2>Promo Terbatas!</h2>
+        <p id="countdown">Hitung Mundur: <span id="timer"></span></p>
+    </section>
 
-      <div class="social">
-        <a id="wa-link" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
-        <a id="ig-link" href="https://www.instagram.com/muhamad_egaaa" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
-      </div>
-      <button onclick="submitFeedback()">Kirim</button>
-      <button onclick="closePopup()">Tutup</button>
+    <section id="services">
+        <h2>Berbagai Kategori Pekerjaan</h2>
+        <div class="service-categories">
+            <div class="category">
+                <h3>Jasa Joki PPT</h3>
+                <p>Siap membantu membuat presentasi menarik.</p>
+                <p class="price">Harga Normal: <s>Rp 50.000 - Rp 150.000</s></p>
+                <p class="promo-price">Harga Promo: Rp 30.000</p>
+            </div>
+            <div class="category">
+                <h3>Jasa Joki Makalah</h3>
+                <p>Membantu menyusun makalah dengan baik.</p>
+                <p class="price">Harga Normal: <s>Rp 50.000 - Rp 200.000</s></p>
+                <p class="promo-price">Harga Promo: Rp 40.000</p>
+            </div>
+            <div class="category">
+                <h3>Jasa Joki Coding</h3>
+                <p>Solusi untuk tugas pemrograman.</p>
+                <p class="price">Harga Normal: <s>Rp 50.000 - Rp 300.000</s></p>
+                <p class="promo-price">Harga Promo: Rp 50.000</p>
+            </div>
+            <div class="category">
+                <h3>Jasa Joki Terjemah Dokumen</h3>
+                <p>Terjemahan dokumen yang akurat.</p>
+                <p class="price">Harga Normal: <s>Rp 50.000 - Rp 200.000</s></p>
+                <p class="promo-price">Harga Promo: Rp 30.000</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="order">
+        <h2>Cara Order</h2>
+        <div class="order-steps">
+            <ol>
+                <li>Pilih kategori jasa yang diinginkan.</li>
+                <li>Hubungi kami melalui WhatsApp atau Instagram.</li>
+                <li>Berikan detail pekerjaan dan tunggu konfirmasi.</li>
+                <li>Bayar sesuai harga yang disepakati.</li>
+                <li>Terima pekerjaan dan beri kami umpan balik.</li>
+            </ol>
+            <a href="https://wa.me/+6285788996875"class="whatsapp-link" onclick="sendWhatsAppMessage()">Pesan Sekarang via WhatsApp</a>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimoni Pengguna</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Layanan sangat memuaskan! Makalah saya jadi lebih baik." - Mahasiswa A</p>
+            </div>
+            <div class="testimonial">
+                <p>"PPT yang dibuat sangat menarik dan mudah dipahami." - Mahasiswa B</p>
+            </div>
+            <div class="testimonial">
+                <p>"JokiExpress membantu saya mengatasi tugas coding dengan cepat!" - Mahasiswa C</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 jokiExpress. Semua Hak Dilindungi.</p>
+        <p>Ikuti kami di:
+            <a href="https://instagram.com/jokiExpress" class="social-link">Instagram</a>
+        </p>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot">
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Tulis pesan...">
+        <button id="chatbot-send">Kirim</button>
     </div>
 
-    <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">Kembali ke Atas</button>
-  </div>
+    <script>
+        function sendWhatsAppMessage() {
+    const phoneNumber = "625788996875"; // Nomor WhatsApp yang diperbarui
+    const services = [
+        { name: "Jasa Joki PPT", price: "Rp 30.000" },
+        { name: "Jasa Joki Makalah", price: "Rp 40.000" },
+        { name: "Jasa Joki Coding", price: "Rp 50.000" },
+        { name: "Jasa Terjemahan", price: "Rp 30.000" }
+    ];
 
-  <script>
-    function showPopup(service) {
-      const popup = document.getElementById('popup');
-      const title = document.getElementById('popup-title');
-      const content = document.getElementById('popup-content');
-      const waLink = document.getElementById('wa-link');
-      const feedbackMessage = document.getElementById('feedback-message');
+    let message = "Halo, saya tertarik dengan jasa joki Anda. Berikut adalah daftar harga promo:\n\n";
+    services.forEach(service => {
+        message += `${service.name}: ${service.price}\n`;
+    });
+    message += "\nSaya ingin memesan jasa joki. Bisakah Anda membantu saya?";
 
-      title.innerText = `Layanan ${service}`;
-      content.innerText = `Kami menawarkan layanan ${service} dengan kualitas terbaik. Silakan hubungi kami untuk detail lebih lanjut.`;
-      
-      // Update WhatsApp link
-      // Update WhatsApp link
-waLink.href = `https://wa.me/+6285788996875?text=Halo, saya ingin menanyakan lebih lanjut tentang jasa ${service}. Bisakah Anda membantu saya?
-`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappURL, '_blank');
+}
+       // Hitung Mundur untuk Promo
+function startCountdown(duration) {
+    const timerElement = document.getElementById('timer');
+    let time = duration;
 
-      
-      popup.classList.add('show'); // Tampilkan popup
-      feedbackMessage.style.display = 'none'; // Sembunyikan pesan umpan balik
-    }
+    const interval = setInterval(() => {
+        const days = Math.floor(time / (24 * 60 * 60));
+        const hours = Math.floor((time % (24 * 60 * 60)) / (60 * 60));
+        const minutes = Math.floor((time % (60 * 60)) / 60);
+        const seconds = time % 60;
 
-    function closePopup() {
-      const popup = document.getElementById('popup');
-      popup.classList.remove('show'); // Sembunyikan popup
-      document.getElementById('comment').value = ''; // Reset komentar
-      document.getElementById('feedback-message').style.display = 'none'; // Sembunyikan pesan umpan balik
-    }
+        timerElement.textContent = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
 
-    function showFeedback(rating) {
-      const feedbackMessage = document.getElementById('feedback-message');
+        if (--time < 0) {
+            clearInterval(interval);
+            timerElement.textContent = "Promo Selesai!";
+        }
+    }, 1000);
+}
 
-      let message = '';
-      switch (rating) {
-        case '5':
-          message = 'Terima kasih banyak! Kami sangat menghargai dukungan Anda.';
-          break;
-        case '4':
-          message = 'Terima kasih! Kami berusaha untuk memberikan yang terbaik.';
-          break;
-        case '3':
-          message = 'Terima kasih! Kami akan terus berusaha untuk meningkatkan layanan kami.';
-          break;
-        case '2':
-          message = 'Maaf jika layanan kami belum memuaskan. Kami akan memperbaiki diri.';
-          break;
-        case '1':
-          message = 'Kami mohon maaf atas ketidakpuasan Anda. Kami akan berusaha lebih baik.';
-          break;
-      }
+// Mulai hitung mundur untuk 1 minggu (dalam detik)
+startCountdown(604800); // 1 minggu = 7 hari * 24 jam * 60 menit * 60 detik
 
-      feedbackMessage.innerText = message;
-      feedbackMessage.style.display = 'block'; // Tampilkan pesan umpan balik
-    }
 
-    function submitFeedback() {
-      const rating = document.querySelector('input[name="rating"]:checked');
-      const comment = document.getElementById('comment').value;
+        // Fungsi Mode Gelap
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
 
-      if (rating) {
-        const feedbackMessage = document.getElementById('feedback-message');
-        let message = feedbackMessage.innerText;
-
-        message += `\nKomentar: ${comment}`;
-        feedbackMessage.innerText = message; // Tampilkan pesan umpan balik
-        closePopup(); // Tutup popup
-      } else {
-        alert("Silakan pilih rating.");
-      }
-    }
-
-    window.onscroll = function() {
-      const button = document.querySelector('.back-to-top');
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        button.style.display = "block";
-      } else {
-        button.style.display = "none";
-      }
-    };
-
-    function scrollToTop() {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-  </script>
+        // Fungsi Chatbot
+        document.getElementById("chatbot-send").addEventListener("click", () => {
+            const input = document.getElementById("chatbot-input");
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesContainer = document.getElementById("chatbot-messages");
+                
+                // Tambahkan pesan pengguna
+                const userMessage = document.createElement("div");
+                userMessage.textContent = message;
+                messagesContainer.appendChild(userMessage);
+                
+                // Kosongkan input
+                input.value = '';
+                
+                // Simulasi respon bot (ganti dengan logika aktual nanti)
+                setTimeout(() => {
+                    const botResponse = document.createElement("div");
+                    botResponse.textContent = "Terima kasih atas pesan Anda!";
+                    messagesContainer.appendChild(botResponse);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll ke bawah
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
